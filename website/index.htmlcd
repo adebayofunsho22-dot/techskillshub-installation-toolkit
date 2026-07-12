@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Skills Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
 
 <nav>
@@ -20,43 +29,63 @@
     <p><strong>Professional Full-Stack Development Environment Installation Services</strong></p>
 
     <p>
-        We help schools, universities, ICT training centers, businesses, and developers
-        install, configure, and test complete MERN Stack development environments,
-        so students and teams can start coding with confidence.
+        We help schools, universities, ICT training centers, businesses, and
+        developers install, configure, and test complete MERN Stack development
+        environments so students and teams can start coding with confidence.
     </p>
 
     <a href="#contact" class="btn">📅 Book an Installation</a>
 </header>
 
 <section id="about">
+
     <h2>About Us</h2>
 
     <p>
-        Tech Skills Hub provides professional Full-Stack development environment
-        installation services for schools, universities, ICT training centers,
+        Tech Skills Hub provides professional installation and configuration
+        of modern software development environments for schools,
+        universities, coding bootcamps, ICT training centers,
         businesses, and individual developers.
     </p>
+
 </section>
 
 <section id="services">
+
     <h2>Our Services</h2>
 
     <ul>
+        <li>Complete MERN Stack Installation</li>
         <li>Node.js Installation</li>
         <li>MongoDB Installation</li>
         <li>MongoDB Compass Setup</li>
-        <li>Git Installation & Configuration</li>
-        <li>GitHub Setup</li>
-        <li>Visual Studio Code Setup</li>
-        <li>Postman Installation</li>
+        <li>Visual Studio Code Configuration</li>
+        <li>Git & GitHub Setup</li>
         <li>React Development Environment</li>
         <li>Express.js Development Environment</li>
-        <li>Complete MERN Stack Installation</li>
+        <li>Postman Installation</li>
         <li>Developer Environment Testing</li>
     </ul>
+
+</section>
+
+<section>
+
+    <h2>Why Choose Tech Skills Hub?</h2>
+
+    <ul>
+        <li>✔ Professional Installation</li>
+        <li>✔ Complete MERN Stack Setup</li>
+        <li>✔ Installation Verification</li>
+        <li>✔ Training Center Support</li>
+        <li>✔ Fast Deployment</li>
+        <li>✔ Post-Installation Assistance</li>
+    </ul>
+
 </section>
 
 <section id="pricing">
+
     <h2>Pricing</h2>
 
     <ul>
@@ -64,22 +93,27 @@
         <li>Training Center Lab Setup – Contact for a Quote</li>
         <li>School Computer Lab Installation – Contact for a Quote</li>
     </ul>
+
 </section>
 
 <section id="contact">
+
     <h2>Book an Installation</h2>
 
     <p><strong>Founder:</strong> Funsho Gbenga Adebayo</p>
 
     <p><strong>GitHub:</strong> adebayofunsho22-dot</p>
 
-    <p>Email: Coming Soon</p>
+    <p><strong>Email:</strong> Coming Soon</p>
 
-    <p>Phone: Coming Soon</p>
+    <p><strong>Phone:</strong> Coming Soon</p>
+
 </section>
 
 <footer>
+
     <p>© 2026 Tech Skills Hub. All Rights Reserved.</p>
+
 </footer>
 
 </body>
