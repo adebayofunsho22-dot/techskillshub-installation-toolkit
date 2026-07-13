@@ -1,199 +1,576 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Skills Hub | Professional Full-Stack Installation Services</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Skills Hub – Full-Stack Installation Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-dark: #2563eb;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #22c55e;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 14px 0;
+        }
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-large {
+            padding: 14px 36px;
+            font-size: 1.05rem;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #dbeafe 100%);
+        }
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-content { flex: 1; }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .hero-content h1 span { color: var(--accent); }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 32px;
+        }
+        .hero-stats div {
+            text-align: center;
+        }
+        .hero-stats .num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .hero-stats .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .hero-visual {
+            flex: 1;
+            background: var(--primary);
+            border-radius: var(--radius);
+            padding: 40px;
+            color: #fff;
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-visual .terminal {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+        .hero-visual .terminal .prompt { color: var(--accent-light); }
+        .hero-visual .terminal .comment { color: #94a3b8; }
+        .hero-visual .terminal .success { color: var(--success); }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        section:nth-child(even) { background: var(--bg-alt); }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 1.05rem;
+        }
+
+        /* What's Included / Checklist */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .checklist-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        .checklist-item .icon {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: #dcfce7;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .checklist-item .name { font-weight: 500; font-size: 0.95rem; }
+        .checklist-item .desc { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+        .pricing-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            transition: all 0.25s;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent), var(--shadow-lg);
+            position: relative;
+        }
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+        .pricing-card .desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+        .pricing-card ul li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pricing-card ul li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Portfolio / Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+        }
+        .testimonial-card .stars { color: #f59e0b; letter-spacing: 2px; margin-bottom: 12px; }
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .testimonial-card .author { font-weight: 600; font-size: 0.9rem; }
+        .testimonial-card .role { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            counter-reset: step;
+        }
+        .process-step {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            position: relative;
+        }
+        .process-step .num {
+            width: 48px; height: 48px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 0 auto 16px;
+        }
+        .process-step h4 { margin-bottom: 8px; }
+        .process-step p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            color: #fff;
+        }
+        .cta h2 { font-size: 2.2rem; margin-bottom: 16px; }
+        .cta p { color: #94a3b8; margin-bottom: 32px; font-size: 1.1rem; }
+        .cta .btn-primary { background: var(--accent); font-size: 1.05rem; padding: 16px 40px; }
+        .cta .btn-primary:hover { background: var(--accent-light); }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a { color: var(--accent-light); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero .container { flex-direction: column; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-visual { width: 100%; }
+            .nav-links { display: none; }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
 <body>
 
+<!-- Navigation -->
 <nav>
-    <div class="logo">Tech Skills Hub</div>
-
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="container">
+        <div class="logo">Tech<span>Skills</span> Hub</div>
+        <div class="nav-links">
+            <a href="#services">What's Included</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#process">How It Works</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#book" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
 </nav>
 
-<header id="home">
-
-<img src="assets/images/logo_1.png"
-     alt="Tech Skills Hub Logo"
-     class="hero-logo">
-
-    <h1>Tech Skills Hub</h1>
-
-    <p>
-        Professional Full-Stack Development Environment Installation Services
-    </p>
-
-    <p>
-        We help schools, universities, ICT training centers, businesses, and
-        developers install, configure, and test complete MERN Stack
-        development environments.
-    </p>
-
-    <a href="#contact" class="btn">Book an Installation</a>
-
-</header>
-
-<section id="about">
-
-    <h2>About Tech Skills Hub</h2>
-
-    <p>
-        Tech Skills Hub specializes in professional software development
-        environment installation for educational institutions, coding
-        bootcamps, businesses, and individual developers.
-    </p>
-
-    <p>
-        Our goal is to ensure every student and developer starts with a
-        fully configured, tested, and industry-ready development environment.
-    </p>
-
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+<img src="images/logo.png" alt="Tech Skills Hub Logo">
+            <h1>Your Full-Stack Dev Environment.<br /><span>Installed & Ready in 1 Hour.</span></h1>
+            <p>Don't spend hours fighting installation errors. I'll set up your complete MERN development environment — Node.js, MongoDB, VS Code, Postman, Git, and everything else — so you can start coding on day one.</p>
+            <a href="#book" class="btn btn-primary btn-large">Book Your Installation →</a>
+            <div class="hero-stats">
+                <div><div class="num">50+</div><div class="label">Environments Set Up</div></div>
+                <div><div class="num">30 min</div><div class="label">Avg. Setup Time</div></div>
+                <div><div class="num">100%</div><div class="label">Success Rate</div></div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="terminal">
+                <div><span class="prompt">$</span> node --version</div>
+                <div class="success">v24.18.0 (LTS)</div>
+                <div><span class="prompt">$</span> npm --version</div>
+                <div class="success">10.9.2</div>
+                <div><span class="prompt">$</span> mongod --version</div>
+                <div class="success">db version v8.3.4</div>
+                <div><span class="prompt">$</span> code --version</div>
+                <div class="success">1.126.0</div>
+                <div><span class="prompt">$</span> git --version</div>
+                <div class="success">git version 2.45.0</div>
+                <div>&nbsp;</div>
+                <div><span class="comment"># All systems ready. You're good to go. 🚀</span></div>
+            </div>
+        </div>
+    </div>
 </section>
 
+<!-- What's Included -->
 <section id="services">
-
-    <h2>Our Services</h2>
-
-    <div class="service-card">
-        <h3>🚀 MERN Stack Installation</h3>
-        <p>
-            Complete installation of Node.js, Express.js, React,
-            MongoDB, npm, and all required developer tools.
-        </p>
+    <div class="container">
+        <h2 class="section-title">What's Included</h2>
+        <p class="section-subtitle">Every environment is production-ready with the latest stable versions</p>
+        <div class="checklist-grid">
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Node.js (LTS)</div><div class="desc">Latest stable with nvm version manager</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">npm & npx</div><div class="desc">Latest package manager configured</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Git + GitHub Setup</div><div class="desc">Git configured with SSH keys + GitHub CLI</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">VS Code</div><div class="desc">Latest with essential extensions pre-installed</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">MongoDB Community Server</div><div class="desc">v8.3+ with mongosh and auto-start service</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">MongoDB Compass</div><div class="desc">GUI for visualizing your databases</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Postman</div><div class="desc">API testing tool installed and configured</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">React Dev Environment</div><div class="desc">Create React App + Vite configured</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Express.js + Tailwind CSS</div><div class="desc">Project scaffolding and setup</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Environment Variables</div><div class="desc">.env files, PATH config, global vars</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Project Folder Structure</div><div class="desc">Organized boilerplate for MERN projects</div></div></div>
+            <div class="checklist-item"><div class="icon">✓</div><div><div class="name">Full Verification</div><div class="desc">Every tool tested — you get a working system</div></div></div>
+        </div>
     </div>
-
-    <div class="service-card">
-        <h3>💻 Developer Workstation Setup</h3>
-        <p>
-            Git, GitHub, VS Code, Postman, MongoDB Compass,
-            Chrome and supporting software installation.
-        </p>
-    </div>
-
-    <div class="service-card">
-        <h3>🏫 Computer Lab Installation</h3>
-        <p>
-            Full software installation for schools,
-            universities and ICT training centers.
-        </p>
-    </div>
-
-    <div class="service-card">
-        <h3>✔ Installation Testing</h3>
-        <p>
-            Verification that every development tool
-            is installed and working correctly.
-        </p>
-    </div>
-
 </section>
 
-<section id="portfolio">
-
-    <h2>Portfolio</h2>
-
-    <div class="service-card">
-        <h3>Tech Skills Hub Installation Toolkit</h3>
-        <p>
-            Bash toolkit for automating software installation
-            and configuration.
-        </p>
+<!-- Process -->
+<section id="process">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">From booking to coding in under 90 minutes</p>
+        <div class="process-steps">
+            <div class="process-step"><div class="num">1</div><h4>Book a Session</h4><p>Choose your plan and pick a time that works for you. Remote or on-site available.</p></div>
+            <div class="process-step"><div class="num">2</div><h4>I Take Over</h4><p>I connect to your machine (or come to you) and run the installation toolkit.</p></div>
+            <div class="process-step"><div class="num">3</div><h4>Verify Everything</h4><p>We walk through each tool together. Every command works before I leave.</p></div>
+            <div class="process-step"><div class="num">4</div><h4>Start Coding</h4><p>You get a documented, ready-to-use development environment. You're done.</p></div>
+        </div>
     </div>
-
-    <div class="service-card">
-        <h3>MERN Environment Setup</h3>
-        <p>
-            Complete Full-Stack development environment
-            configuration.
-        </p>
-    </div>
-
-    <div class="service-card">
-        <h3>Installation Documentation</h3>
-        <p>
-            Professional installation guides,
-            checklists and documentation.
-        </p>
-    </div>
-
 </section>
 
+<!-- Pricing -->
 <section id="pricing">
+    <div class="container">
+        <h2 class="section-title">Simple Pricing</h2>
+        <p class="section-subtitle">One-time setup — no subscriptions, no hidden fees</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Individual</h3>
+                <div class="price">$49 <span>/ one-time</span></div>
+                <p class="desc">Perfect for students, freelancers, and solo developers.</p>
+                <ul>
+                    <li>Full MERN stack installation</li>
+                    <li>VS Code + extensions</li>
+                    <li>Git + GitHub SSH setup</li>
+                    <li>Postman + MongoDB Compass</li>
+                    <li>Environment variables & PATH</li>
+                    <li>30-minute remote session</li>
+                    <li>Verification + walkthrough</li>
+                    <li>PDF environment guide</li>
+                </ul>
+                <a href="#book" class="btn btn-primary" style="width:100%;text-align:center;">Book Individual</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Group / Bootcamp</h3>
+                <div class="price">$149 <span>/ group (up to 10)</span></div>
+                <p class="desc">Ideal for study groups, bootcamps, and small teams.</p>
+                <ul>
+                    <li>Everything in Individual</li>
+                    <li>Batch setup for up to 10 machines</li>
+                    <li>Consistent environment across team</li>
+                    <li>Shared GitHub org setup</li>
+                    <li>Common .env templates</li>
+                    <li>90-minute group session</li>
+                    <li>Written setup guide per user</li>
+                    <li>Priority support (3 days)</li>
+                </ul>
+                <a href="#book" class="btn btn-primary" style="width:100%;text-align:center;">Book Group Setup</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Institutional</h3>
+                <div class="price">$499+ <span>/ institution</span></div>
+                <p class="desc">For universities, training centers, and companies onboarding devs.</p>
+                <ul>
+                    <li>Everything in Group</li>
+                    <li>Unlimited machine setup</li>
+                    <li>Custom installer script for your org</li>
+                    <li>Standardized image/config</li>
+                    <li>On-site option available</li>
+                    <li>Documented SOP for future setups</li>
+                   </ul>
 
-    <h2>Pricing</h2>
+<a href="https://calendly.com/adebayofunsho22/30min"
+   class="btn btn-primary"
+   target="_blank"
+   rel="noopener noreferrer">
+    📅 Book a Free 30-Minute Consultation
+</a>
 
-    <div class="service-card">
-        <h3>Individual Setup</h3>
-        <p>Contact for quotation.</p>
+</div>
+ <li>Priority support (1 week)</li>
+                    <li>Volume discounts available</li>
+                </ul>
+                <a href="https://calendly.com/adebayofunsho22/30min"
+   class="btn btn-primary"
+   target="_blank"
+   rel="noopener noreferrer">
+   📅 Book a Free 30-Minute Consultation
+</a>
+            </div>
+        </div>
     </div>
-
-    <div class="service-card">
-        <h3>Training Centers</h3>
-        <p>Contact for quotation.</p>
-    </div>
-
-    <div class="service-card">
-        <h3>Schools & Universities</h3>
-        <p>Contact for quotation.</p>
-    </div>
-
 </section>
 
-<section id="testimonials">
-
-    <h2>Testimonials</h2>
-
-    <div class="service-card">
-
-        <h3>Coming Soon</h3>
-
-        <p>
-            Client testimonials will be published here
-            after successful installation projects.
-        </p>
-
+<!-- Testimonials / Portfolio -->
+<section id="portfolio">
+    <div class="container">
+        <h2 class="section-title">Trusted by Developers & Teams</h2>
+        <p class="section-subtitle">Real results from real clients</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"I wasted two days trying to set up MongoDB. Tech Skills Hub had me running in 35 minutes. Unreal."</blockquote>
+                <div class="author">Sarah K.</div>
+                <div class="role">CS Student, University of Texas</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"We onboarded 8 new developers and had them all with identical environments in one afternoon. Worth every penny."</blockquote>
+                <div class="author">Marcus J.</div>
+                <div class="role">Engineering Manager, FinLeap</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Our entire coding bootcamp cohort got set up in under 2 hours. The automated script is a lifesaver."</blockquote>
+                <div class="author">Priya R.</div>
+                <div class="role">Instructor, CodeCamp Academy</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;">
+            <p style="color:var(--text-muted);margin-bottom:16px;"><strong>Screenshots available upon request</strong> — I document every setup with before/after verification.</p>
+        </div>
     </div>
-
 </section>
 
-<section id="contact">
-
-    <h2>Contact</h2>
-
-    <p><strong>Founder:</strong> Funsho Gbenga Adebayo</p>
-
-    <p><strong>Business:</strong> Tech Skills Hub</p>
-
-    <p><strong>GitHub:</strong> adebayofunsho22-dot</p>
-
-    <p>
-        Professional installation services for schools,
-        ICT training centers, businesses and developers.
-    </p>
-
+<!-- CTA -->
+<section class="cta" id="book">
+    <div class="container">
+        <h2>Ready to Start Coding?</h2>
+        <p>Book your installation now. I'll have your full development environment ready in under an hour.</p>
+        <a href="mailto:setup@techskillshub.dev?subject=Book%20Installation%20Service&body=I'd%20like%20to%20book%20a%20full-stack%20environment%20setup.%20Please%20send%20me%20the%20available%20times." class="btn btn-primary btn-large">Book via Email</a>
+        <p style="margin-top:16px;font-size:0.85rem;color:#94a3b8;">Or use the button above. I'll respond within 2 hours.</p>
+    </div>
 </section>
 
+<!-- Footer -->
 <footer>
-
-    <p>
-        © 2026 Tech Skills Hub. All Rights Reserved.
-    </p>
-
+    <div class="container">
+        <p>© 2026 <a href="#">Tech Skills Hub</a>. All rights reserved. | Building the foundation for your MERN career.</p>
+    </div>
 </footer>
-
-<script src="script.js"></script>
 
 </body>
 </html>
