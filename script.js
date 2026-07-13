@@ -1,21 +1,44 @@
 /*
 ==========================================
-Tech Skills Hub Website
+Tech Skills Hub
+Professional Installation Services
 Founder: Funsho Gbenga Adebayo
-Version: 1.0
 ==========================================
 */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ===========================
-    // Smooth Navigation Highlight
-    // ===========================
+    console.log("Welcome to Tech Skills Hub");
 
+    // Smooth scrolling for navigation links
+    const links = document.querySelectorAll("nav a");
+
+    links.forEach(link => {
+        link.addEventListener("click", function (e) {
+
+            const targetId = this.getAttribute("href");
+
+            if (targetId.startsWith("#")) {
+
+                e.preventDefault();
+
+                const target = document.querySelector(targetId);
+
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+
+            }
+
+        });
+    });
+
+    // Highlight active navigation item
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
 
-    window.addEventListener("scroll", () => {
+    window.addEventListener("scroll", function () {
 
         let current = "";
 
@@ -30,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-        navLinks.forEach(link => {
+        links.forEach(link => {
 
             link.classList.remove("active");
 
@@ -42,66 +65,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // ===========================
-    // Scroll To Top Button
-    // ===========================
+    // Navigation shadow while scrolling
+    const nav = document.querySelector("nav");
 
-    const button = document.createElement("button");
+    window.addEventListener("scroll", function () {
 
-    button.innerHTML = "↑";
+        if (window.scrollY > 30) {
 
-    button.id = "topBtn";
+            nav.style.boxShadow =
+                "0 6px 20px rgba(0,0,0,0.15)";
 
-    document.body.appendChild(button);
-
-    button.style.position = "fixed";
-    button.style.bottom = "20px";
-    button.style.right = "20px";
-    button.style.display = "none";
-    button.style.padding = "12px 18px";
-    button.style.fontSize = "18px";
-    button.style.border = "none";
-    button.style.borderRadius = "50%";
-    button.style.cursor = "pointer";
-    button.style.background = "#1565c0";
-    button.style.color = "#fff";
-    button.style.boxShadow = "0 4px 10px rgba(0,0,0,.3)";
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 400) {
-            button.style.display = "block";
         } else {
-            button.style.display = "none";
+
+            nav.style.boxShadow =
+                "0 2px 10px rgba(0,0,0,0.1)";
+
         }
 
     });
 
-    button.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top: 0,
-            behavior: "smooth"
-
-        });
-
-    });
-
-    // ===========================
-    // Footer Year
-    // ===========================
-
-    const footerYear = document.getElementById("year");
-
-    if (footerYear) {
-        footerYear.textContent = new Date().getFullYear();
-    }
-
-    // ===========================
-    // Welcome Message
-    // ===========================
-
-    console.log("Welcome to Tech Skills Hub");
-
 });
+
+/*
+==========================================
+Future Features
+==========================================
+
+✔ Contact Form Validation
+✔ Request a Quotation
+✔ WhatsApp Chat Button
+✔ Installation Booking
+✔ Portfolio Gallery
+✔ Dark Mode
+✔ Client Dashboard
+
+*/
