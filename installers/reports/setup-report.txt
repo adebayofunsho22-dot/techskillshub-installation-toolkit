@@ -1,0 +1,20 @@
+==================================
+Tech Skills Hub Installation Report
+==================================
+
+Operating System : Termux
+Package Manager  : pkg
+[OK] git
+     Version: git version 2.55.0
+[OK] node
+     Version: v26.4.0
+[OK] npm
+     Version: 12.0.1
+[OK] curl
+     Version: curl 8.21.0 (aarch64-unknown-linux-android) libcurl/8.21.0 OpenSSL/3.6.3 zlib/1.3.2 libssh2/1.11.1 nghttp2/1.69.0 ngtcp2/1.24.0 nghttp3/1.17.0
+[OK] wget
+     Version: GNU Wget 1.25.0 built on linux-android.
+[MISSING] Visual Studio Code
+[MISSING] MongoDB
+Git Username: adebayofunsho22-dot
+Git Email: adebayofunsho22@gmail.com

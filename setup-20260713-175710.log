@@ -1,0 +1,11 @@
+[0;34m[i][0m Detected OS: linux
+[0;34m[i][0m === Step 1: System Dependencies ===
+[0;32m[✓][0m curl already installed
+[0;32m[✓][0m wget already installed
+[0;32m[✓][0m git already installed
+[0;34m[i][0m === Step 2: Node.js & npm ===
+[0;32m[✓][0m Node.js v26.4.0 already installed
+[0;32m[✓][0m npm 12.0.1 ready
+[0;34m[i][0m === Step 3: Git Configuration ===
+[0;32m[✓][0m Git configured
+[0;34m[i][0m === Step 4: VS Code ===
